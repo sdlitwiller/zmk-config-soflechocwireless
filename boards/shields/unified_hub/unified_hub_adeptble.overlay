@@ -9,6 +9,7 @@
 
     kscan0: kscan {
         compatible = "zmk,kscan-mock";
+        events = <>;
     };
 
     default_transform: keymap_transform_0 {

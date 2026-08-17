@@ -1,0 +1,4 @@
+// xiao_ble does not define pro_micro_i2c by default, but ZMK's sofle
+// shield references it for the OLED. Alias it to xiao_i2c so the DTS
+// compiles even when CONFIG_ZMK_DISPLAY=n.
+pro_micro_i2c: &xiao_i2c {};
