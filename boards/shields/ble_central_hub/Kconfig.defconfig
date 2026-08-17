@@ -1,12 +1,12 @@
 # Copyright (c) 2026
 # SPDX-License-Identifier: MIT
 
-if SHIELD_UNIFIED_HUB_SOFLE || SHIELD_UNIFIED_HUB_ADEPTBLE
+if SHIELD_BLE_CENTRAL_HUB
 
 config ZMK_SPLIT_ROLE_CENTRAL
     default y
 
 config ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS
-    default 1
+    default 3
 
 endif
