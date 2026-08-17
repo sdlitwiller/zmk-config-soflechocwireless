@@ -1,0 +1,8 @@
+# Copyright (c) 2026
+# SPDX-License-Identifier: MIT
+
+config SHIELD_UNIFIED_HUB_SOFLE
+    def_bool $(shields_list_contains,unified_hub_sofle)
+
+config SHIELD_UNIFIED_HUB_ADEPTBLE
+    def_bool $(shields_list_contains,unified_hub_adeptble)
