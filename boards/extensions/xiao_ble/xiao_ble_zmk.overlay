@@ -2,7 +2,7 @@
 // Defines the pro_micro labels required by the Sofle shield before they are
 // referenced, since DTC requires labels to be defined prior to use.
 / {
-    pro_micro: connector {
+    pro_micro: pro_micro_connector {
         compatible = "arduino-pro-micro";
         #gpio-cells = <2>;
         gpio-map-mask = <0xffffffff 0xffffffc0>;
