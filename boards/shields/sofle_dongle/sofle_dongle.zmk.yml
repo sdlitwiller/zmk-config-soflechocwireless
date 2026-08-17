@@ -1,0 +1,9 @@
+file_format: "1"
+id: SofleDongle
+name: Sofle Dongle
+type: shield
+url: https://github.com/sdlitwiller/zmk-config-soflechocwireless
+requires: [xiao_ble]
+features:
+  - keys
+  - pointer

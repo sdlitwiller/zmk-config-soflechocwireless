@@ -1,0 +1,5 @@
+/*
+ * Sofle Dongle keymap — re-uses the main Sofle keymap so the dongle processes
+ * the same layers, combos, and behaviours as the left-half central build.
+ */
+#include "sofle.keymap"

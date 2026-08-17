@@ -1,0 +1,10 @@
+file_format: "1"
+id: AdeptBLE
+name: AdeptBLE
+type: shield
+url: https://github.com/taichan1113/AdeptBLE
+requires: [xiao_ble]
+features:
+  - keys
+  - pointer
+  - studio
