@@ -1,5 +1,3 @@
-pro_micro_i2c: &xiao_i2c {};
-
 / {
     chosen {
         zmk,physical-layout = &josefadamcik_sofle_layout;

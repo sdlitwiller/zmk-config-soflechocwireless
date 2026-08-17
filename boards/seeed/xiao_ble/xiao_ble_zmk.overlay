@@ -1,0 +1,4 @@
+// Board-level overlay applied before any shield overlays.
+// Defines the pro_micro_i2c label required by the Sofle shield (sofle.dtsi:75)
+// before it is referenced, since DTC requires labels to be defined prior to use.
+pro_micro_i2c: &xiao_i2c {};
