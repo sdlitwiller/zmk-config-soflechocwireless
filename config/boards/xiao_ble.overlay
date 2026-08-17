@@ -1,0 +1,4 @@
+// Define the label expected by the Sofle shield before shield overlays
+// are processed. This supports both regular and settings_reset shield
+// combinations on xiao_ble.
+pro_micro_i2c: &xiao_i2c {};
