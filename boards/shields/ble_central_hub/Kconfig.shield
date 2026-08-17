@@ -1,0 +1,5 @@
+# Copyright (c) 2026
+# SPDX-License-Identifier: MIT
+
+config SHIELD_BLE_CENTRAL_HUB
+    def_bool $(shields_list_contains,ble_central_hub)
