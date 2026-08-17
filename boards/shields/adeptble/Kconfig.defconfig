@@ -1,0 +1,15 @@
+if SHIELD_ADEPTBLE
+
+config ZMK_BLE
+  default y 
+
+config ZMK_POINTING
+  default y
+
+config ZMK_SPLIT
+  default y
+
+config SPI
+	default y
+
+endif

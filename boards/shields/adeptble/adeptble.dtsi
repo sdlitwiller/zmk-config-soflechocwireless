@@ -1,0 +1,19 @@
+#include <dt-bindings/zmk/matrix_transform.h>
+#include <adeptble-layout.dtsi>
+
+&adeptble_layout {
+    transform = <&default_transform>;
+};
+
+/ {
+    chosen {
+        zmk,kscan = &kscan0;
+    };
+
+    default_transform: keymap_transform_0 {
+        compatible = "zmk,matrix_transform";
+        columns = <4>;
+        rows = <2>;
+            
+    }
+};
