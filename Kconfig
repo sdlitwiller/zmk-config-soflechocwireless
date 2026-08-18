@@ -1,0 +1,23 @@
+menu "Sofle Choc Wireless Custom Features"
+
+config ZMK_HUB_LOW_BATTERY_LED
+    bool "Blink hub LED when any device battery is low"
+    default n
+    depends on SHIELD_BLE_CENTRAL_HUB
+    help
+      Blinks led0 on the BLE hub when either the hub battery or any connected
+      peripheral battery is below the configured threshold.
+
+config ZMK_HUB_LOW_BATTERY_THRESHOLD
+    int "Low battery threshold percent"
+    default 20
+    range 1 100
+    depends on ZMK_HUB_LOW_BATTERY_LED
+
+config ZMK_HUB_LOW_BATTERY_BLINK_MS
+    int "Low battery blink interval in ms"
+    default 500
+    range 100 5000
+    depends on ZMK_HUB_LOW_BATTERY_LED
+
+endmenu

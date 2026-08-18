@@ -9,4 +9,7 @@ config ZMK_SPLIT_ROLE_CENTRAL
 config ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS
     default 3
 
+config ZMK_HUB_LOW_BATTERY_LED
+    default y
+
 endif

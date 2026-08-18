@@ -1,4 +1,6 @@
 name: zmk-keyboard-soflechocwireless
 build:
+  cmake: .
+  kconfig: Kconfig
   settings:
     board_root: .
