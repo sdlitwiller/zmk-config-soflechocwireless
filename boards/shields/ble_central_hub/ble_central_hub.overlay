@@ -4,7 +4,6 @@
 
 #include <dt-bindings/zmk/matrix_transform.h>
 #include <layouts/josefadamcik/sofle.dtsi>
-#include "../adeptble/adeptble_split_inputs.dtsi"
 
 &josefadamcik_sofle_layout {
     transform = <&default_transform>;
@@ -34,13 +33,3 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(4,5) RC(4,6) RC(3,6) RC(3,7) 
         events = <>;
     };
 };
-
-#ifdef CONFIG_ZMK_INPUT_SPLIT
-&adeptble_trackball_listener {
-    status = "okay";
-};
-
-&adeptble_buttons_listener {
-    status = "okay";
-};
-#endif

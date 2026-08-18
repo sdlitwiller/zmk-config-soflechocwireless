@@ -3,7 +3,6 @@
 #include <dt-bindings/zmk/matrix_transform.h>
 #include <physical_layouts.dtsi>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
-#include "adeptble_split_inputs.dtsi"
 
 // layers
 #define DEFAULT 0
@@ -20,8 +19,16 @@
     };
 
     kscan0: kscan {
-        compatible = "zmk,kscan-mock";
-        events = <>;
+        compatible = "zmk,kscan-gpio-direct";
+        wakeup-source;
+        input-gpios
+            = <&xiao_d 1 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&xiao_d 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&xiao_d 3 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&xiao_d 4 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&xiao_d 5 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&xiao_d 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            ;
     };
 
     default_transform: keymap_transform_0 {
@@ -65,41 +72,6 @@
         };
     };
 
-    adeptble_buttons: adeptble_buttons {
-        compatible = "gpio-keys";
-        wakeup-source;
-        debounce-interval-ms = <5>;
-
-        button_0 {
-            gpios = <&xiao_d 1 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-            zephyr,code = <INPUT_BTN_0>;
-        };
-
-        button_1 {
-            gpios = <&xiao_d 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-            zephyr,code = <INPUT_BTN_1>;
-        };
-
-        button_2 {
-            gpios = <&xiao_d 3 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-            zephyr,code = <INPUT_BTN_2>;
-        };
-
-        button_3 {
-            gpios = <&xiao_d 4 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-            zephyr,code = <INPUT_BTN_3>;
-        };
-
-        button_4 {
-            gpios = <&xiao_d 5 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-            zephyr,code = <INPUT_BTN_4>;
-        };
-
-        button_5 {
-            gpios = <&xiao_d 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-            zephyr,code = <INPUT_BTN_5>;
-        };
-    };
 };
 
 &gpio0 {
@@ -161,10 +133,25 @@
     };
 };
 
-&adeptble_trackball_split {
+/ {
+  trackball_listener: trackball_listner {
+    compatible = "zmk,input-listener";
     device = <&trackball>;
-};
+    input-processors = <&zip_xy_swap_mapper>;
 
-&adeptble_buttons_split {
-    device = <&adeptble_buttons>;
-};
+    default {
+        layers = <DEFAULT>;
+        process-next;
+    };
+    scroll {
+        layers = <SCRLM SCRLH>;
+        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT)>, <&zip_xy_swap_mapper>, <&zip_xy_scaler 1 10>, <&zip_xy_to_scroll_mapper>;
+        process-next;
+    };
+    snipe {
+        layers = <SNIPE>;
+        input-processors = <&zip_xy_scaler 1 5>;
+        process-next;
+    };
+  };
+}; 
