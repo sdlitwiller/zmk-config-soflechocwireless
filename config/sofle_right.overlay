@@ -1,5 +1,3 @@
-#include "sofle.dtsi"
-
 &default_transform {
     col-offset = <6>;
 };
