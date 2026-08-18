@@ -29,10 +29,10 @@ include:
   - board: xiao_ble//zmk
     shield: ble_central_hub settings_reset
     artifact-name: ble_central_hub_settings_reset
-  - board: nice_nano_v2//zmk
+  - board: nice_nano//zmk
     shield: sofle_left settings_reset
     artifact-name: sofle_left_settings_reset
-  - board: nice_nano_v2//zmk
+  - board: nice_nano//zmk
     shield: sofle_right settings_reset
     artifact-name: sofle_right_settings_reset
   - board: xiao_ble//zmk
