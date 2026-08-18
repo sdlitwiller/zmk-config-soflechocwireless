@@ -1,5 +1,12 @@
 # Copyright (c) 2026
 # SPDX-License-Identifier: MIT
 
-config SHIELD_BLE_CENTRAL_HUB
-    def_bool $(shields_list_contains,ble_central_hub)
+if SHIELD_BLE_CENTRAL_HUB
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+config ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS
+    default 2
+
+endif
