@@ -52,43 +52,37 @@
     default_layer {
       display-name = "Default";
       bindings = <
-        &ltm BLTH MCLK &ltm DEVICE MB4 &mkp MB5 &lth SCRLM RCLK
-        &mkp LCLK                               &mto SCRLM SNIPE
+        &ltm BLTH MCLK &ltm DEVICE MB4 &mkp MB5 &lth SCRLM RCLK &mkp LCLK &mto SCRLM SNIPE
       >;
     };
     scroll_tap_layer {
       display-name = "Scroll-Momentary";
       bindings = <
-        &trans &trans &to SCRLH &trans
-        &to SCRLH               &trans
+        &trans &trans &to SCRLH &trans &to SCRLH &trans
       >;
     };
     scroll_hold_layer {
       display-name = "Scroll-Keep";
       bindings = <
-        &trans &trans &trans &to DEFAULT
-        &trans               &to DEFAULT
+        &trans &trans &trans &to DEFAULT &trans &to DEFAULT
       >;
     };
     device_layer {
       display-name = "Device";
       bindings = <
-        &bootloader &trans       &trans       &trans       &trans     &trans
-        &trans      &trans       &trans       &trans       &trans &trans
+        &bootloader &trans &trans &trans &trans &trans
       >;
     };
     bluetooth_layer {
       display-name = "Bluetooth";
       bindings = <
-        &trans &trans       &trans       &trans
-        &trans                             &trans
+        &trans &trans &trans &trans &trans &trans
       >;
     };
     snipe_layer {
       display-name = "Snipe";
       bindings = <
-        &trans &trans &trans &lth SCRLM RCLK
-        &trans               &to DEFAULT
+        &trans &trans &trans &lth SCRLM RCLK &trans &to DEFAULT
       >;
     };
   };

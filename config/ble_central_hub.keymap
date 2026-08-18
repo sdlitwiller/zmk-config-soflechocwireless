@@ -11,21 +11,8 @@
 #include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/pointing.h>
 #include <input/processors.dtsi>
-#include <zephyr/dt-bindings/input/input-event-codes.h>
 
 / {
-    adeptble_button_behaviors: adeptble_button_behaviors {
-        compatible = "zmk,input-processor-behaviors";
-        #input-processor-cells = <0>;
-        codes = <INPUT_BTN_0 INPUT_BTN_1 INPUT_BTN_2 INPUT_BTN_3 INPUT_BTN_4 INPUT_BTN_5>;
-        bindings = <&mkp MCLK
-                    &mkp MB4
-                    &mkp MB5
-                    &mkp RCLK
-                    &mkp LCLK
-                    &none>;
-    };
-
     keymap {
         compatible = "zmk,keymap";
 
@@ -87,18 +74,10 @@
 };
 
 #ifdef BLE_CENTRAL_HUB_SETTINGS_RESET
-&adeptble_buttons_listener {
-    status = "disabled";
-};
-
 &adeptble_trackball_listener {
     status = "disabled";
 };
 #else
-&adeptble_buttons_listener {
-    input-processors = <&adeptble_button_behaviors>;
-};
-
 &adeptble_trackball_listener {
     input-processors = <&zip_xy_swap_mapper>;
 };

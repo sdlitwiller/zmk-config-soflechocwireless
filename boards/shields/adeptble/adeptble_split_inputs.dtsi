@@ -7,22 +7,11 @@
             compatible = "zmk,input-split";
             reg = <0>;
         };
-
-        adeptble_buttons_split: adeptble_buttons_split@1 {
-            compatible = "zmk,input-split";
-            reg = <1>;
-        };
     };
 
     adeptble_trackball_listener: adeptble_trackball_listener {
         compatible = "zmk,input-listener";
         status = "disabled";
         device = <&adeptble_trackball_split>;
-    };
-
-    adeptble_buttons_listener: adeptble_buttons_listener {
-        compatible = "zmk,input-listener";
-        status = "disabled";
-        device = <&adeptble_buttons_split>;
     };
 };

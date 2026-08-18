@@ -20,17 +20,24 @@
     };
 
     kscan0: kscan {
-        compatible = "zmk,kscan-mock";
-        events = <>;
+        compatible = "zmk,kscan-gpio-direct";
+        wakeup-source;
+        input-gpios
+            = <&xiao_d 1 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&xiao_d 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&xiao_d 3 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&xiao_d 4 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&xiao_d 5 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&xiao_d 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            ;
     };
 
     default_transform: keymap_transform_0 {
         compatible = "zmk,matrix-transform";
-        rows = <2>;
-        columns = <4>;
+        rows = <1>;
+        columns = <6>;
         map = <
-            RC(0,0) RC(0,1) RC(0,2) RC(0,3)
-            RC(0,4) RC(0,5)
+            RC(0,0) RC(0,1) RC(0,2) RC(0,3) RC(0,4) RC(0,5)
         >;
     };
 
@@ -59,8 +66,7 @@
         layout1: layout1 {
             physical-layout = <&physical_layout0>;
             positions
-                = < 0  1  2  3>
-                , < 4        5>
+                = < 0  1  2  3  4  5>
                 ;
         };
     };
@@ -73,44 +79,6 @@
         gpios = <13 GPIO_ACTIVE_HIGH>;
         output-low;
         line-name = "Fast Battery Charge";
-    };
-};
-
-/ {
-    adeptble_buttons: adeptble_buttons {
-        compatible = "gpio-keys";
-        wakeup-source;
-        debounce-interval-ms = <5>;
-
-        button_0 {
-            gpios = <&xiao_d 1 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-            zephyr,code = <INPUT_BTN_0>;
-        };
-
-        button_1 {
-            gpios = <&xiao_d 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-            zephyr,code = <INPUT_BTN_1>;
-        };
-
-        button_2 {
-            gpios = <&xiao_d 3 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-            zephyr,code = <INPUT_BTN_2>;
-        };
-
-        button_3 {
-            gpios = <&xiao_d 4 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-            zephyr,code = <INPUT_BTN_3>;
-        };
-
-        button_4 {
-            gpios = <&xiao_d 5 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-            zephyr,code = <INPUT_BTN_4>;
-        };
-
-        button_5 {
-            gpios = <&xiao_d 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-            zephyr,code = <INPUT_BTN_5>;
-        };
     };
 };
 
@@ -166,8 +134,4 @@
 
 &adeptble_trackball_split {
     device = <&trackball>;
-};
-
-&adeptble_buttons_split {
-    device = <&adeptble_buttons>;
 };
