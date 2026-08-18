@@ -43,6 +43,34 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(4,5) RC(4,6) RC(3,6) RC(3,7) 
     status = "disabled";
 };
 
+/* The board's chosen zephyr,console (and related) still points to
+ * board_cdc_acm_uart which is now disabled, causing uart_console.c to fail
+ * to compile because no device struct is generated for a disabled node.
+ * For the regular build, redirect to the Studio RPC UART.
+ * For the settings_reset build, remove the console chosen entirely since
+ * no USB console is needed. */
+#ifdef BLE_CENTRAL_HUB_SETTINGS_RESET
+/ {
+    chosen {
+        /delete-property/ zephyr,console;
+        /delete-property/ zephyr,shell-uart;
+        /delete-property/ zephyr,uart-mcumgr;
+        /delete-property/ zephyr,bt-mon-uart;
+        /delete-property/ zephyr,bt-c2h-uart;
+    };
+};
+#else
+/ {
+    chosen {
+        zephyr,console = &snippet_studio_rpc_usb_uart;
+        zephyr,shell-uart = &snippet_studio_rpc_usb_uart;
+        zephyr,uart-mcumgr = &snippet_studio_rpc_usb_uart;
+        zephyr,bt-mon-uart = &snippet_studio_rpc_usb_uart;
+        zephyr,bt-c2h-uart = &snippet_studio_rpc_usb_uart;
+    };
+};
+#endif
+
 &adeptble_trackball_listener {
     status = "okay";
 };
