@@ -34,10 +34,11 @@
 
     default_transform: keymap_transform_0 {
         compatible = "zmk,matrix-transform";
-        rows = <1>;
-        columns = <6>;
+        rows = <2>;
+        columns = <4>;
         map = <
-            RC(0,0) RC(0,1) RC(0,2) RC(0,3) RC(0,4) RC(0,5)
+            RC(0,0) RC(0,1) RC(0,2) RC(0,3)
+            RC(1,0) RC(1,1)
         >;
     };
 
@@ -66,7 +67,8 @@
         layout1: layout1 {
             physical-layout = <&physical_layout0>;
             positions
-                = < 0  1  2  3  4  5>
+                = < 0  1  2  3>
+                , < 4  5>
                 ;
         };
     };
