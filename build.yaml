@@ -28,6 +28,7 @@ include:
     cmake-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
   - board: xiao_ble//zmk
     shield: ble_central_hub settings_reset
+    cmake-args: -DDTS_EXTRA_CPPFLAGS=-DBLE_CENTRAL_HUB_SETTINGS_RESET
     artifact-name: ble_central_hub_settings_reset
   - board: nice_nano//zmk
     shield: sofle_left settings_reset
