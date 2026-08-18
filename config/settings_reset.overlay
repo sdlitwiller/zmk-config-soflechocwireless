@@ -1,0 +1,7 @@
+&adeptble_trackball_listener {
+    status = "disabled";
+};
+
+&adeptble_buttons_listener {
+    status = "disabled";
+};
