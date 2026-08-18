@@ -47,7 +47,7 @@
                     &trans    &trans      &trans    &trans    &trans   &trans &trans    &trans   &trans          &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp LC(TAB) LC(LS(TAB)) &trans>;
+            sensor-bindings = <&inc_dec_kp LC(TAB) LC(LS(TAB)) &inc_dec_kp RIGHT LEFT>;
         };
 
         raise_layer {
@@ -65,7 +65,7 @@
                         &trans       &trans       &trans       &trans  &trans   &trans  &trans    &trans    &trans   &trans
             >;
 
-            sensor-bindings = <&trans &inc_dec_kp UP DOWN>;
+            sensor-bindings = <&inc_dec_kp LG(TAB) LG(LS(TAB)) &inc_dec_kp UP DOWN>;
         };
     };
 };
