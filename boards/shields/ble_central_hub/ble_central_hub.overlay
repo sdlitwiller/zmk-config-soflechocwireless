@@ -38,10 +38,27 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(4,5) RC(4,6) RC(3,6) RC(3,7) 
 /* Disable the board's default CDC-ACM console UART so only the Studio RPC
  * UART is exposed. Without this the XIAO BLE presents two CDC-ACM interfaces
  * and macOS shows four serial ports (tty+cu for each), filling ZMK Studio's
- * device picker with duplicates. */
+ * device picker with duplicates.
+ * Skip this in settings_reset builds: that build has no studio-rpc-usb-uart
+ * snippet, so board_cdc_acm_uart must stay enabled or uart_console.c fails
+ * to compile because the chosen zephyr,console would point to a disabled node. */
+#ifndef BLE_CENTRAL_HUB_SETTINGS_RESET
 &board_cdc_acm_uart {
     status = "disabled";
 };
+
+/* Redirect the chosen console/uart nodes to the Studio RPC UART now that
+ * board_cdc_acm_uart is disabled. */
+/ {
+    chosen {
+        zephyr,console = &snippet_studio_rpc_usb_uart;
+        zephyr,shell-uart = &snippet_studio_rpc_usb_uart;
+        zephyr,uart-mcumgr = &snippet_studio_rpc_usb_uart;
+        zephyr,bt-mon-uart = &snippet_studio_rpc_usb_uart;
+        zephyr,bt-c2h-uart = &snippet_studio_rpc_usb_uart;
+    };
+};
+#endif
 
 &adeptble_trackball_listener {
     status = "okay";
