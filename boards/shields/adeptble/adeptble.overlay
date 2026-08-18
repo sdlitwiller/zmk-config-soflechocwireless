@@ -67,6 +67,7 @@
 
     adeptble_buttons: adeptble_buttons {
         compatible = "gpio-keys";
+        wakeup-source;
         debounce-interval-ms = <5>;
 
         button_0 {
