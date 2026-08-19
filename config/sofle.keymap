@@ -55,7 +55,7 @@
                     &trans    &trans      &trans    &trans    &trans   &trans &trans    &trans   &trans          &trans
             >;
 
-            sensor-bindings = <&rotate_kp TAB LS(TAB) &trans>;
+            sensor-bindings = <&rotate_kp C_VOL_UP C_VOL_DN &trans>;
         };
 
         raise_layer {
@@ -73,7 +73,7 @@
                         &trans       &trans       &trans       &trans  &trans   &trans  &trans    &trans    &trans   &trans
             >;
 
-            sensor-bindings = <&rotate_kp TAB LS(TAB) &rotate_kp RIGHT LEFT>;
+            sensor-bindings = <&trans &rotate_kp RIGHT LEFT>;
         };
     };
 };
