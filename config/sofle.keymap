@@ -16,6 +16,12 @@
             #sensor-binding-cells = <2>;
             bindings = <&kp &kp>;
         };
+
+        encoder_noop: encoder_noop {
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            bindings = <&none>, <&none>;
+        };
     };
 
     keymap {
@@ -55,7 +61,7 @@
                     &trans    &trans      &trans    &trans    &trans   &trans &trans    &trans   &trans          &trans
             >;
 
-            sensor-bindings = <&rotate_kp TAB LS(TAB) &trans>;
+            sensor-bindings = <&rotate_kp TAB LS(TAB) &encoder_noop>;
         };
 
         raise_layer {
