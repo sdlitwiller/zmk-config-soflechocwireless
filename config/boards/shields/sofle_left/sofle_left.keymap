@@ -11,21 +11,16 @@
 
 / {
     behaviors {
-        app_switch_next: app_switch_next {
-            compatible = "zmk,behavior-sensor-rotate";
-            #sensor-binding-cells = <0>;
-            bindings = <&sk LGUI>, <&kp TAB>;
-        };
+    app_switch_kp: app_switch_kp {
+        compatible = "zmk,behavior-sensor-rotate-var";
+        #sensor-binding-cells = <2>;
+        tap-ms = <200>;
+        bindings = <&kp &kp>;
+    };
 
-        app_switch_prev: app_switch_prev {
-            compatible = "zmk,behavior-sensor-rotate";
-            #sensor-binding-cells = <0>;
-            bindings = <&sk LGUI>, <&kp LS(TAB)>;
-        };
-
-        rotate_kp: rotate_kp {
-            compatible = "zmk,behavior-sensor-rotate-var";
-            #sensor-binding-cells = <2>;
+    rotate_kp: rotate_kp {
+        compatible = "zmk,behavior-sensor-rotate-var";
+        #sensor-binding-cells = <2>;
             bindings = <&kp &kp>;
         };
     };
@@ -48,7 +43,7 @@
                  &kp LGUI &kp LALT &kp LCTRL &mo 1  &kp RET    &kp SPACE         &mo 2  &kp RCTRL &kp RALT  &kp RGUI
             >;
 
-            sensor-bindings = <&app_switch_next &app_switch_prev &rotate_kp RIGHT LEFT>;
+            sensor-bindings = <&app_switch_kp LG(TAB) LG(LS(TAB)) &rotate_kp RIGHT LEFT>;
         };
 
         lower_layer {
@@ -67,7 +62,7 @@
                     &trans    &trans      &trans    &trans    &trans   &trans &trans    &trans   &trans          &trans
             >;
 
-            sensor-bindings = <&rotate_kp LC(TAB) LC(LS(TAB)) &trans>;
+            sensor-bindings = <&app_switch_kp LC(TAB) LC(LS(TAB)) &trans>;
         };
 
         raise_layer {
